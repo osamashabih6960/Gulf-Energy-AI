@@ -1,0 +1,33 @@
+GULF ENERGY AI — PROJECT FLOW (AS OF TODAY)
+
+Goal: Hourly energy-demand forecasting + MLOps prototype.
+
+Dataset: AEP_hourly.csv (US-region public proxy, not actual Gulf-region data).
+
+Completed:
+1. Ingested and checked raw data.
+2. Validated missing values, duplicates, demand values, and timestamps.
+3. Cleaned data and handled repeated timestamps by averaging.
+4. Created calendar features, lag_1, lag_24, and target_next_hour.
+5. Checked timestamp gaps and final data quality.
+6. Split chronologically (no shuffle): train 96,930 rows; test 24,233 rows.
+7. Prepared X/y files with 9 input features.
+8. Verified train/test shapes, matching feature columns, and no missing values.
+9. Checked project folder structure.
+
+Key scripts:
+src/data_ingestion.py
+src/data_validation.py
+src/data_cleaning.py
+src/feature_engineering.py
+src/time_validation.py
+src/final_data_validation.py
+src/data_splitting.py
+src/prepare_training_data.py
+src/verify_training_data.py
+
+Pending:
+- Check Git status and push project to GitHub.
+- Model training has not started.
+
+Note: Real Gulf-region forecasting requires suitable Gulf-region data and validation.
