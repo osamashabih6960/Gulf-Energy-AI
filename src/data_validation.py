@@ -52,24 +52,60 @@ def main():
         df.duplicated().sum()
     )
 
-    # 5. Check negative demand values
+    # 5. Count timestamps that occur more than once
+    duplicate_counts = (
+        df["Datetime"]
+        .value_counts()
+        .loc[lambda counts: counts > 1]
+    )
+
+    print("\nDuplicate timestamp counts:")
+    if duplicate_counts.empty:
+        print("No duplicate timestamps found.")
+    else:
+        print(duplicate_counts)
+
+    # 6. Inspect demand values for duplicate timestamps
+    duplicate_rows = df[
+        df["Datetime"].isin(duplicate_counts.index)
+    ].sort_values("Datetime")
+
+    print("\nDuplicate records with demand values:")
+    if duplicate_rows.empty:
+        print("No duplicate records to inspect.")
+    else:
+        print(duplicate_rows.to_string(index=False))
+
+    # 7. Compare demand values per duplicate timestamp
+    print("\nDemand values per duplicate timestamp:")
+    if duplicate_rows.empty:
+        print("No duplicate timestamps found.")
+    else:
+        demand_comparison = (
+            duplicate_rows.groupby("Datetime")["AEP_MW"]
+            .agg(["count", "nunique", "min", "max"])
+        )
+        print(demand_comparison)
+
+    # 8. Check negative demand values
     print(
         "\nNegative demand values:",
         (df["AEP_MW"] < 0).sum()
     )
 
-    # 6. Check chronological order
+    # 9. Check chronological order
     valid_dates = df["Datetime"].dropna()
     is_sorted = valid_dates.is_monotonic_increasing
+
     print(
         f"\nTimestamps in chronological order: {is_sorted}"
     )
 
-    # 7. Demand statistics
+    # 10. Demand statistics
     print("\nDemand statistics:")
     print(df["AEP_MW"].describe())
 
-    # 8. Display first five rows
+    # 11. Display first five rows
     print("\nFirst 5 rows:")
     print(df.head())
 
