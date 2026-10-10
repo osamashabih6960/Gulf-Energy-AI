@@ -1,0 +1,14 @@
+GULF ENERGY AI - BASELINE COMPARISON
+====================================
+Baseline: next-hour demand equals current-hour demand.
+Dataset: AEP historical demand; not actual Gulf-region data.
+
+Baseline MAE: 407.828 MW
+Baseline RMSE: 525.740 MW
+Baseline R2: 0.9537
+
+XGBoost MAE: 127.651 MW
+XGBoost RMSE: 171.004 MW
+XGBoost R2: 0.9951
+
+XGBoost MAE improvement: 68.70%

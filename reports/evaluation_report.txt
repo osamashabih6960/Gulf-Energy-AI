@@ -1,0 +1,11 @@
+GULF ENERGY AI - MODEL EVALUATION REPORT
+=======================================
+
+Number of predictions: 24233
+MAE: 127.651 MW
+RMSE: 171.004 MW
+R2 Score: 0.9951
+Mean Error (Predicted - Actual): 15.599 MW
+Maximum Absolute Error: 3337.774 MW
+
+Dataset note: Results are based on the AEP historical energy-demand dataset, not actual Gulf-region data.
