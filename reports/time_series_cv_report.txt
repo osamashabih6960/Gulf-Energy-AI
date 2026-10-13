@@ -1,0 +1,18 @@
+TIME SERIES CROSS-VALIDATION REPORT
+===================================
+
+Folds: 5
+Training rows: 96930
+
+Fold-wise results:
+ fold  train_rows  validation_rows     MAE_MW    RMSE_MW       R2
+    1       16155            16155 151.808207 209.430985 0.993341
+    2       32310            16155 145.495900 211.036579 0.993502
+    3       48465            16155 128.158760 170.112155 0.995685
+    4       64620            16155 133.303218 178.572229 0.994520
+    5       80775            16155 127.603428 167.791723 0.995953
+
+Mean and standard deviation:
+          MAE_MW     RMSE_MW        R2
+mean  137.273903  187.388734  0.994600
+std    10.853772   21.244618  0.001205
