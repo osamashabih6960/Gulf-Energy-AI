@@ -1,33 +1,30 @@
-GULF ENERGY AI — PROJECT FLOW (AS OF TODAY)
+GULF ENERGY AI — PROJECT FLOW Goal: Hourly energy-demand forecasting +
+MLOps prototype.
 
-Goal: Hourly energy-demand forecasting + MLOps prototype.
+Dataset: - data/raw/AEP_hourly.csv (public US-region proxy; not actual
+Gulf-region data)
 
-Dataset: AEP_hourly.csv (US-region public proxy, not actual Gulf-region data).
+Completed: 1. Ingested and checked raw data. 2. Validated missing
+values, duplicates, demand values, and timestamps. 3. Cleaned data;
+repeated timestamps handled by averaging. 4. Created calendar features,
+lag_1, lag_24, and target_next_hour. 5. Checked timestamp gaps and final
+data quality. 6. Chronological split (no shuffle): train 96,930 rows;
+test 24,233 rows. 7. Prepared X/y files with 9 input features. 8.
+Verified train/test shapes, matching feature columns, and no missing
+values. 9. Checked project folder structure. 10. Initialized Git/DVC and
+added the raw dataset to DVC tracking. 11. Configured the DagsHub DVC
+remote and installed/started setting up S3 support.
 
-Completed:
-1. Ingested and checked raw data.
-2. Validated missing values, duplicates, demand values, and timestamps.
-3. Cleaned data and handled repeated timestamps by averaging.
-4. Created calendar features, lag_1, lag_24, and target_next_hour.
-5. Checked timestamp gaps and final data quality.
-6. Split chronologically (no shuffle): train 96,930 rows; test 24,233 rows.
-7. Prepared X/y files with 9 input features.
-8. Verified train/test shapes, matching feature columns, and no missing values.
-9. Checked project folder structure.
-
-Key scripts:
-src/data_ingestion.py
-src/data_validation.py
-src/data_cleaning.py
-src/feature_engineering.py
-src/time_validation.py
-src/final_data_validation.py
-src/data_splitting.py
-src/prepare_training_data.py
+Key scripts: - src/data_ingestion.py - src/data_validation.py -
+src/data_cleaning.py - src/feature_engineering.py -
+src/time_validation.py - src/final_data_validation.py -
+src/data_splitting.py - src/prepare_training_data.py -
 src/verify_training_data.py
 
-Pending:
-- Check Git status and push project to GitHub.
-- Model training has not started.
+Pending: - Fix DagsHub DVC authentication/configuration (credentials
+currently appear blank). - Run dvc push successfully and verify the
+remote upload. - Check Git status; commit and push project/DVC metadata
+to GitHub. - Start model training and evaluation.
 
-Note: Real Gulf-region forecasting requires suitable Gulf-region data and validation.
+Note: AEP is a US-region public proxy, not Gulf-region data. Real
+Gulf-region forecasting requires suitable local data and validation.
