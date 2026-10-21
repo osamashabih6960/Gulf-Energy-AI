@@ -95,7 +95,7 @@ def main():
         mlflow.xgboost.log_model(
             xgb_model=model,
             name="xgboost_energy_model",
-            input_example=X_train.head(3),
+            input_example=X_train.head(3).astype("float64"),
         )
 
         # Log feature names
@@ -117,3 +117,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
