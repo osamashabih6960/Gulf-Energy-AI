@@ -11,4 +11,4 @@ pytest
 mlflow
 dvc
 fastapi
-uvicorn
+uvicornhttpx
